@@ -13,6 +13,8 @@
   "author": "marcus.bernal@slalom.com",
   "license": "ISC",
   "devDependencies": {
-    "serverless": "^1.64.1"
+    "serverless": "^1.64.1",
+    "serverless-webpack": "^5.3.1",
+    "webpack": "^4.41.6"
   }
 }

@@ -16,6 +16,20 @@ service: servicea
 #app: your-app-name
 #org: your-org-name
 
+plugins:
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules:
+      packagePath: '../package.json'
+      forceExclude:
+        - aws-sdk
+    packager: 'npm'
+    excludeFiles: src/**/*.test.js
+# TODO: add source maps https://github.com/serverless-heaven/serverless-webpack/issues/228#issuecomment-330504278
+
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
