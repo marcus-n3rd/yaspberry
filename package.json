@@ -1,0 +1,15 @@
+{
+  "name": "svrlss",
+  "version": "0.0.1",
+  "description": "Marcus' Serverless JS Musing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serverless",
+    "slalom"
+  ],
+  "author": "marcus.bernal@slalom.com",
+  "license": "ISC"
+}
