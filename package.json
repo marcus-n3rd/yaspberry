@@ -11,5 +11,8 @@
     "slalom"
   ],
   "author": "marcus.bernal@slalom.com",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^1.64.1"
+  }
 }
