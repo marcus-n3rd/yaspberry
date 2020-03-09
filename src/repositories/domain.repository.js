@@ -1,3 +1,4 @@
+/* Infrastructure specific, should not contain any business logic */
 // import * as AWS from 'aws-sdk';
 
 // const params = {};

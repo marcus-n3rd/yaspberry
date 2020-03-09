@@ -1,3 +1,4 @@
+/* Infrastructure specific, should not contain any business logic */
 import flatted from 'flatted';
 import env from '../config/env';
 
