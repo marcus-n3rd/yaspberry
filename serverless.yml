@@ -72,8 +72,16 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: src/_lambda-handlers/endpoint100Get.handler
+  domainsIdGet:
+    handler: src/_lambda-handlers/domainsIdGet.handler
+    events:
+      - http:
+          path: domains/{id}
+          method: get
+          request:
+            parameters:
+              paths:
+                id: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

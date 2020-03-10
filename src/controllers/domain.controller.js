@@ -2,14 +2,14 @@
 import { getEntity, putEntity } from '../repositories/domain.repository';
 import DomainModel from '../models/domain.model';
 
-export const endpoint100GetHandler = async arbitraryValue => {
-  const rawData = await getEntity(arbitraryValue);
+export const domainGet = async id => {
+  const rawData = await getEntity(id);
   const entity = new DomainModel(rawData);
   return entity.view();
 };
 
-export const endpoint100PutHandler = async arbitraryValue => {
-  const entity = (new DomainModel()).fromInput(arbitraryValue);
+export const domainPut = async newData => {
+  const entity = (new DomainModel()).fromInput(newData);
   await putEntity(entity);
   return entity.view();
 };
