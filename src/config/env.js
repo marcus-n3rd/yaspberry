@@ -1,6 +1,6 @@
 const configStage = ['dev', 'staging', 'prod'].includes(process.env.STAGE_NAME) ? process.env.STAGE_NAME : 'dev';
 
-export default envConfig = Object.freeze({
+export default Object.freeze({
   stageName: process.env.STAGE_NAME,
   configStage,
   logLevel: process.env.LOG_LEVEL,

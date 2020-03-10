@@ -1,6 +1,6 @@
-import logger from '../services/logger.service';
+import logger from '../services/logging.service';
 
-function errorLoggerMiddleware() {
+export default function errorLoggerMiddleware() {
   return {
     onError: (handler, next) => {
       const { error, context, event } = handler;
@@ -24,5 +24,3 @@ function errorLoggerMiddleware() {
     },
   };
 }
-
-module.exports = errorLoggerMiddleware;

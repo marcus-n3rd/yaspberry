@@ -1,6 +1,6 @@
-const createError = require('http-errors');
-const axios = require('axios');
-const logger = require('../services/logger.service');
+import createError from 'http-errors';
+import axios from 'axios';
+import logger from '../services/logging.service';
 
 const TOKEN_ISSUER_URL = 'https://arbitrary.tokenissuer.local/v1/userinfo';
 const SERVICE_TO_SERVICE_SCP = 'arbitrary_service_to_service_identifier';
@@ -12,7 +12,7 @@ const SERVICE_TO_SERVICE_ROLE = 'arbitrary_system_role';
  * handler context
  * @returns {Object} - middy middlewareObject
  */
-function authMiddleWare() {
+export default function authMiddleWare() {
   return {
     before: async handler => {
       try {
@@ -42,7 +42,7 @@ function authMiddleWare() {
   };
 }
 
-function validateToken(token) {
+export function validateToken(token) {
   // TODO: implement this with whatever authorization service is used for the service
   logger.debug(token);
   return {
@@ -51,5 +51,3 @@ function validateToken(token) {
     },
   };
 }
-
-module.exports = authMiddleWare;

@@ -1,25 +1,24 @@
-const middy = require('middy');
-const ioMiddleware = require('@middy/input-output-logger');
-const errorLoggerMiddleware = require('./errorLogger.middleware');
-const {
+import middy from 'middy';
+import ioMiddleware from '@middy/input-output-logger';
+import {
   httpEventNormalizer,
   httpHeaderNormalizer,
   jsonBodyParser,
   cors,
-} = require('middy/middlewares');
-const authMiddleware = require('./auth.middleware');
-const lambdaProxyMiddleware = require('./lambdaProxy.middleware');
-const logger = require('../services/logger.service');
-const xrayMiddleware = require('./x-ray.middleware').default;
+} from 'middy/middlewares';
+import logger from '../services/logging.service';
+import authMiddleware from './auth.middleware';
+import errorLoggerMiddleware from './errorLogger.middleware';
+import lambdaProxyMiddleware from './lambdaProxy.middleware';
+import xrayMiddleware from './x-ray.middleware';
 
 /**
  * Attach middleware stack to a lambda handler
  * @param {function} handler - a lambda handler
  * @param {Object} options - additional configuration
  * @returns {function()} - a decorated lambda handler
- *
  */
-function withHttpMiddleware(handler, { auth = { enabled: true } } = {}) {
+export default function withHttpMiddleware(handler, { auth = { enabled: true } } = {}) {
   const middleware = middy(handler);
 
   middleware
@@ -45,5 +44,3 @@ function withHttpMiddleware(handler, { auth = { enabled: true } } = {}) {
 
   return middleware;
 }
-
-module.exports = withHttpMiddleware;

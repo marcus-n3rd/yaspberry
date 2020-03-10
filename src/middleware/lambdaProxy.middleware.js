@@ -1,7 +1,7 @@
-const lambdaProxy = require('lambda-proxy-response');
-const createError = require('http-errors');
+import lambdaProxy from 'lambda-proxy-response';
+import createError from 'http-errors';
 
-function lambdaProxyMiddleware() {
+export default function lambdaProxyMiddleware() {
   return {
     // Takes response and transforms it to a lambdaProxy respone
     after: (handler, next) => {
@@ -35,5 +35,3 @@ function lambdaProxyMiddleware() {
     },
   };
 }
-
-module.exports = lambdaProxyMiddleware;
