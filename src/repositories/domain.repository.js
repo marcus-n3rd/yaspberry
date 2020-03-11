@@ -1,15 +1,19 @@
 /* Infrastructure specific, should not contain any business logic */
 // import * as AWS from 'aws-sdk';
+import logger from '../services/logging.service';
 
 // const params = {};
 // const dynamo = new AWS.DynamoDB(params);
 
 export const getEntity = entity => {
-  console.log('docClient:', 'get entity', entity);
+  logger.debug('docClient:', 'get entity', entity);
   // return await dynamo.getItem(entity).promise();
+  return {
+    something: 'Unique',
+  };
 };
 
 export const putEntity = entity => {
-  console.log('docClient:', 'putting entity', entity);
+  logger.debug('docClient:', 'putting entity', entity);
   // return await dynamo.putItem(entity).promise();
 };
