@@ -83,6 +83,8 @@ functions:
             parameters:
               paths:
                 id: true
+    environment:
+      DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -124,12 +126,26 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
+resources:
+  Resources:
+    DataTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-domainTable-${self:provider.stage}
+        AttributeDefinitions:
+          - AttributeName: PK # Partition Key
+            AttributeType: S
+          - AttributeName: SK # Sort Key
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"
