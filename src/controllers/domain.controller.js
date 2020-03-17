@@ -8,8 +8,8 @@ export const domainGet = async id => {
   return entity.view();
 };
 
-export const domainPut = async newData => {
-  const entity = (new DomainModel()).fromInput(newData);
-  await putEntity(entity);
+export const domainPut = async (id, newData) => {
+  const entity = new DomainModel({ id, ...newData });
+  await putEntity(entity.toDatabase());
   return entity.view();
 };

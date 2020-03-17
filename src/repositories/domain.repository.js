@@ -8,7 +8,7 @@ const config = {
 };
 const database = new AWS.DynamoDB.DocumentClient(config);
 
-export const getEntity = id => {
+export const getEntity = async id => {
   logger.debug('docClient: get entity:', { id });
 
   const params = {
@@ -29,7 +29,7 @@ export const getEntity = id => {
   }, {});
 };
 
-export const putEntity = entity => {
+export const putEntity = async entity => {
   logger.debug('docClient: put entity:', { entity });
 
   const params = {
@@ -37,7 +37,7 @@ export const putEntity = entity => {
     Item: entity,
   };
   
-  await database.query(params).promise();
+  await database.put(params).promise();
 
   return entity;
 };
