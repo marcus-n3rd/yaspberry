@@ -1,20 +1,4 @@
-# Welcome to Serverless!
-#
-# This file is the main config file for your service.
-# It's very minimal at this point and uses default values.
-# You can always add more config options for more control.
-# We've included some commented out config examples here.
-# Just uncomment any of them to get that config option.
-#
-# For full config options, check the docs:
-#    docs.serverless.com
-#
-# Happy Coding!
-
 service: domain-service
-# app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
 
 plugins:
   - serverless-webpack
@@ -30,20 +14,14 @@ custom:
     excludeFiles: 'src/**/*.test.js'
 # TODO: add source maps https://github.com/serverless-heaven/serverless-webpack/issues/228#issuecomment-330504278
 
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
-# frameworkVersion: "=X.X.X"
-
 provider:
   name: aws
   runtime: nodejs12.x
 
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  # Defaults
+  stage: dev
   region: us-west-2
 
-# you can add statements to the Lambda function's IAM Role here
   iamRoleStatements:
     - Effect: 'Allow'
       Action:
@@ -93,7 +71,6 @@ functions:
     environment:
       DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 
-# you can add CloudFormation resource templates here
 resources:
   Resources:
     DataTable:
@@ -115,6 +92,7 @@ resources:
           WriteCapacityUnits: 1
 
 #  Outputs:
+      # MAB TODO: Out put api URL
 #     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+#       Description: 'Description for the output'
+#       Value: 'Some output value'
