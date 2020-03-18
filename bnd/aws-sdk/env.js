@@ -1,4 +1,4 @@
-env = {
+const env = {
   SERVICE: process.env.SERVICE || 'domain-service',
   STAGE: process.env.STAGE || 'fail',
   AWS_REGION: process.env.AWS_REGION || 'us-west-2',
