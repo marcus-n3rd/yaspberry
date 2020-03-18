@@ -44,6 +44,11 @@ provider:
             - Ref: 'AWS::AccountId'
             - table/${self:resources.Resources.DataTable.Properties.TableName}
 
+environment:
+  SERVICE: ${self:service}
+  STAGE: ${self:provider.stage}
+  AWS_REGION: ${self:provider.region}
+
 functions:
   domainsIdGet:
     handler: src/_lambda-handlers/domainsIdGet.handler
@@ -91,8 +96,3 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
 
-#  Outputs:
-      # MAB TODO: Out put api URL
-#     NewOutput:
-#       Description: 'Description for the output'
-#       Value: 'Some output value'
