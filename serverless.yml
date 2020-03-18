@@ -5,7 +5,7 @@ plugins:
 
 custom:
   webpack:
-    webpackConfig: 'webpack.config.js'
+    webpackConfig: 'bnd/webpack/webpack.config.js'
     includeModules:
       packagePath: 'package.json'
       forceExclude:
