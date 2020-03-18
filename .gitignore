@@ -5,3 +5,8 @@ jspm_packages
 
 # Serverless directories
 .serverless
+
+# testing files & directories
+junit.xml
+coverage
+jest-stare
