@@ -7,4 +7,7 @@ module.exports = {
   testPathIgnorePatterns: ['jest.config.int.js'],
   reporters: ['default', 'jest-junit', 'jest-stare'],
   testResultsProcessor: './node_modules/jest-stare',
+  transform: {
+    "^.+\\.(js|jsx)$": require.resolve('./babel.transform.js'),
+  },
 };
