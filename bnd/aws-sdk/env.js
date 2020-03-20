@@ -7,4 +7,4 @@ const env = {
 
 env.STACK_NAME = `${env.SERVICE}-${env.STAGE}`;
 
-module.exports = Object.freeze(env);
+export default Object.freeze(env);

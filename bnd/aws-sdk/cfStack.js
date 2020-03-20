@@ -1,5 +1,5 @@
-const env = require('./env');
-const AWS = require('./aws');
+import env from './env';
+import AWS from './aws';
 
 const config = {
   apiVersion: '2010-05-15',
@@ -22,13 +22,13 @@ const initialize = async () => {
   }
 }
 
-module.exports.getOutputValue = async key => {
+export const getOutputValue = async key => {
   await initialize();
   return stack.Outputs.find(output => {
     return output.OutputKey === key;
   }).OutputValue;
 };
 
-module.exports.getServiceEndpoint = async () => {
-  return module.exports.getOutputValue('ServiceEndpoint');
+export const getServiceEndpoint = async () => {
+  return getOutputValue('ServiceEndpoint');
 };

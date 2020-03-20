@@ -1,8 +1,8 @@
-const AWS = require('aws-sdk');
-const env = require('./env');
+import AWS from 'aws-sdk';
+import env from './env';
 
 AWS.config.region = env.AWS_REGION;
 const credentials = new AWS.SharedIniFileCredentials({ profile: env.AWS_PROFILE });
 AWS.config.credentials = credentials;
 
-module.exports = AWS;
+export default AWS;
