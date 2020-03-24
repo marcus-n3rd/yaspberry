@@ -6,8 +6,8 @@
   "scripts": {
     "package": "./node_modules/.bin/serverless package",
     "deploy": "./node_modules/.bin/serverless deploy",
-    "test": "./node_modules/.bin/jest -c ./bnd/jest/jest.config.js",
-    "test:int": "./node_modules/.bin/jest -c ./bnd/jest/jest.config.int.js"
+    "test": "./node_modules/.bin/jest -c ./devops/jest/jest.config.js",
+    "test:int": "./node_modules/.bin/jest -c ./devops/jest/jest.config.int.js"
   },
   "keywords": [
     "serverless",

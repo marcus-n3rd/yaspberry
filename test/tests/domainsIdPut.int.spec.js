@@ -1,5 +1,5 @@
 import supertest from 'supertest';
-import * as stack from '../../bnd/aws-sdk/cfStack';
+import * as stack from '../../devops/aws-sdk/cfStack';
 
 let serviceUrl;
 describe('/domains/{id} PUT', () => {
