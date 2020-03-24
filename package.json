@@ -4,8 +4,10 @@
   "description": "Marcus' Serverless JS Musing",
   "main": "index.js",
   "scripts": {
-    "package": "./node_modules/.bin/serverless package",
-    "deploy": "./node_modules/.bin/serverless deploy",
+    "swagger": "./node_modules/.bin/babel-node --plugins @babel/plugin-transform-modules-commonjs ./devops/gotswag/index.js",
+    "package": "npm run swagger; ./node_modules/.bin/serverless package",
+    "deploy": "npm run swagger; ./node_modules/.bin/serverless deploy",
+    "deploy:packaged": "./node_modules/.bin/serverless deploy --package .serverless",
     "test": "./node_modules/.bin/jest -c ./devops/jest/jest.config.js",
     "test:int": "./node_modules/.bin/jest -c ./devops/jest/jest.config.int.js"
   },
