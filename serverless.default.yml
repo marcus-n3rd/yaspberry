@@ -50,12 +50,9 @@ environment:
   AWS_REGION: ${self:provider.region}
 
 functions:
-  domainsIdGet:
-    handler: src/_lambda-handlers/domainsIdGet.handler
+  domainsIdGET:
     events:
       - http:
-          path: domains/{id}
-          method: get
           request:
             parameters:
               paths:
@@ -63,12 +60,9 @@ functions:
     environment:
       DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 
-  domainsIdPut:
-    handler: src/_lambda-handlers/domainsIdPut.handler
+  domainsIdPUT:
     events:
       - http:
-          path: domains/{id}
-          method: put
           request:
             parameters:
               paths:
