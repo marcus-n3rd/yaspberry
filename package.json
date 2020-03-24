@@ -34,6 +34,7 @@
     "supertest": "^4.0.2",
     "utf-8-validate": "^5.0.2",
     "webpack": "^4.41.6",
+    "webpack-node-externals": "^1.7.2",
     "yaml": "^1.8.3"
   },
   "dependencies": {
@@ -44,8 +45,7 @@
     "flatted": "^2.0.1",
     "http-errors": "^1.7.3",
     "lambda-proxy-response": "^2.0.0",
-    "middy": "^0.34.0",
-    "webpack-node-externals": "^1.7.2"
+    "middy": "^0.34.0"
   },
   "sideEffects": [
     "./src/config/secrets.js",

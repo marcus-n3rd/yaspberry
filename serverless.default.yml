@@ -48,6 +48,7 @@ environment:
   SERVICE: ${self:service}
   STAGE: ${self:provider.stage}
   AWS_REGION: ${self:provider.region}
+  DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 
 functions:
   domainsIdGET:
@@ -57,8 +58,6 @@ functions:
             parameters:
               paths:
                 id: true
-    environment:
-      DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 
   domainsIdPUT:
     events:
@@ -67,8 +66,6 @@ functions:
             parameters:
               paths:
                 id: true
-    environment:
-      DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 
 resources:
   Resources:
