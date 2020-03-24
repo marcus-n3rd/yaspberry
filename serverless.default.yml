@@ -47,7 +47,6 @@ provider:
   environment:
     SERVICE: ${self:service}
     STAGE: ${self:provider.stage}
-    AWS_REGION: ${self:provider.region}
     DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 
 functions:
