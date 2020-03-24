@@ -19,8 +19,8 @@ provider:
   runtime: nodejs12.x
 
   # Defaults
-  stage: dev
-  region: us-west-2
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-west-2'}
 
   iamRoleStatements:
     - Effect: 'Allow'
@@ -44,11 +44,11 @@ provider:
             - Ref: 'AWS::AccountId'
             - table/${self:resources.Resources.DataTable.Properties.TableName}
 
-environment:
-  SERVICE: ${self:service}
-  STAGE: ${self:provider.stage}
-  AWS_REGION: ${self:provider.region}
-  DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
+  environment:
+    SERVICE: ${self:service}
+    STAGE: ${self:provider.stage}
+    AWS_REGION: ${self:provider.region}
+    DATA_TABLE: ${self:resources.Resources.DataTable.Properties.TableName}
 
 functions:
   domainsIdGET:
