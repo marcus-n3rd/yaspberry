@@ -23,7 +23,7 @@ export const lambdaName = (endpoint, endpointData) => {
   const parts = endpoint.split('/').slice(1);
   const first = parts.shift();
   const rest = parts.map(part => {
-    const clean = part.replace(/[^a-zA-Z0-9_]/, '');
+    const clean = part.replace(/[^a-zA-Z0-9_]/g, '');
     const capital = clean.slice(0,1).toUpperCase();
     return `${capital}${clean.slice(1)}`;
   }).join('');
