@@ -36,14 +36,11 @@ export const lambdaDefinition = (name, endpoint, endpointData) => {
     events: [
       {
         http: {
-          path: endpoint,
+          path: endpointData.path,
           method: endpointData.method,
         },
       },
     ],
-    environment: {
-      SOMETHING: 'automatic',
-    },
   };
   return definition;
 };

@@ -5,10 +5,11 @@ export default swagger => {
 
   Object.keys(swagger.paths).forEach(path => {
     const pathData = swagger.paths[path];
-    Object.keys(pathData).forEach(option => {
-      const endpointData = pathData[option];
-      const endpoint = `${path}${option.toUpperCase()}`;
-      endpointData.method = option;
+    Object.keys(pathData).forEach(method => {
+      const endpointData = pathData[method];
+      const endpoint = `${path}${method.toUpperCase()}`;
+      endpointData.path = path;
+      endpointData.method = method;
       endpoints[endpoint] = endpointData;
     });
   });
