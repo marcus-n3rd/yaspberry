@@ -5,7 +5,7 @@ import transformer from './src/transformer';
 
 (async () => {
   const serverless = fromYamlFile('./serverless.default.yml');
-  const swagger = fromYamlFile('./swagger.yml');
+  const swagger = fromYamlFile('./openapi.yml');
 
   const {
     endpoints,
