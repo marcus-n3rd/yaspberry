@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const HANDLER_BASE_PATH = 'src/_lambda-handlers/';
 
 export default (endpoints, auth, definitions) => {
@@ -6,7 +8,7 @@ export default (endpoints, auth, definitions) => {
 
   Object.keys(endpoints).forEach(endpoint => {
     const endpointData = endpoints[endpoint];
-    const lambda = lambdaName(endpoint, endpointData);
+    const lambda = lambdaName(endpoint);
     const lambdaDef = lambdaDefinition(lambda, endpoint, endpointData);
     functions[lambda] = lambdaDef;
   });
@@ -19,7 +21,7 @@ export default (endpoints, auth, definitions) => {
   };
 };
 
-export const lambdaName = (endpoint, endpointData) => {
+export const lambdaName = endpoint => {
   const parts = endpoint.split('/').slice(1);
   const first = parts.shift();
   const rest = parts.map(part => {
@@ -42,5 +44,22 @@ export const lambdaDefinition = (name, endpoint, endpointData) => {
       },
     ],
   };
+  const parameters = lambdaParameters(endpointData);
+  if (Object.keys(parameters).length) {
+    _.set(definition, `events[0].http.request.parameters`, parameters);
+  }
   return definition;
+};
+
+export const lambdaParameters = data => {
+  const params = {};
+  data.parameters.forEach(parameter => {
+    const name = parameter.name;
+    switch (parameter.in) {
+      case 'path':
+        _.set(params, `paths.${name}`, true);
+        break;
+    }
+  });
+  return params;
 };
