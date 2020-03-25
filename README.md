@@ -129,6 +129,51 @@ will be `domainsIdGET`.
 * `/test`
   * Integration or functional tests... another whatever...
 
+### Roadmap
+
+* Gotswag
+  * Handle other parameters: query, body, header, form?
+  * Handle CORS
+  * Handle authorization lambdas?
+    * User JWT
+    * service-to-service
+    * Cognito example?
+* Serverless
+  * Override examples
+  * Cron lambda example
+  * Automatic calculation of the IAM role for the extra resources defined
+    * Document what the IAM role ARN or something
+  * Correct exclusion and inclusion settings (webpack?) to slim down the code in the function,
+    so that it is strictly the handler file and source map
+* Documentation
+  * A markdown doc folder example, define philosophy
+  * Generating an html site for documentation
+    * I know md + GH is a pretty good punt for this feature, but I want more complex documentation eventually
+  * Auto-generating docs
+    * Annotation-driven documentation, like sass docs
+  * Fully integrated vis. design docs/mocks/storybooks
+    * Live style guides
+    * Live pattern/component library
+* CI/CD
+  * Jenkins
+    * Simple Jenkinsfile showing how easy it is deploy through the stages
+    * Jenkinsfile showing the integration with other services and e2e-incremental testing
+    * Dark deploy example
+  * Multiple services deployment orchestrator/composer/zookeeper
+  * Assign a human-readable URL to dev, staging, and prod APIs
+* Testing
+  * End-to-end testing?
+  * Separate, shared testing framework?
+  * How does this service handle test data coming from other services in development?
+  * 100% unit testing... bwahahahaha... or at least better than <1%... you know...
+    * Same thing for integration testing
+* Debugging
+  * An example of how to debug via VS Code?
+* Full-on pet shop example from Swagger implemented in Node?
+* Azure & GCP examples
+* Logging & Monitoring
+* Handling VPC stuff
+
 ### Node Packages
 
 Please, please, please keep track of these.
