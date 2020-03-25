@@ -157,6 +157,7 @@ Please, please, please keep track of these.
 * `jest-junit`: for unit testing
 * `jest-stare`: I dunno, reporting or something?
 * `babel-jest`: for running ES6 scripts
+* `@babel/core`: for running ES6 scripts
 * `@babel/plugin-transform-modules-commonjs`: for running ES6 scripts
 * `supertest`: for calling API endpoints
 * `bufferutil`: a required peer for a jest dependency
@@ -174,3 +175,8 @@ Please, please, please keep track of these.
 
 * `aws-sdk`
 * `@types/aws-lambda`: I dunno
+
+### Forced Security Package Upgrades
+
+* `acorn`
+* `minimist`
