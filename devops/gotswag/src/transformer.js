@@ -44,22 +44,5 @@ export const lambdaDefinition = (name, endpoint, endpointData) => {
       },
     ],
   };
-  const parameters = lambdaParameters(endpointData);
-  if (Object.keys(parameters).length) {
-    _.set(definition, `events[0].http.request.parameters`, parameters);
-  }
   return definition;
-};
-
-export const lambdaParameters = data => {
-  const params = {};
-  data.parameters.forEach(parameter => {
-    const name = parameter.name;
-    switch (parameter.in) {
-      case 'path':
-        _.set(params, `paths.${name}`, true);
-        break;
-    }
-  });
-  return params;
 };

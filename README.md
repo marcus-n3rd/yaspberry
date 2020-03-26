@@ -132,7 +132,6 @@ will be `domainsIdGET`.
 ### Roadmap
 
 * Gotswag
-  * Handle other parameters: query, body, header, form?
   * Handle CORS
   * Handle authorization lambdas?
     * User JWT
