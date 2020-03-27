@@ -132,7 +132,6 @@ will be `domainsIdGET`.
 ### Roadmap
 
 * Gotswag
-  * Handle CORS
   * Handle authorization lambdas?
     * User JWT
     * service-to-service
