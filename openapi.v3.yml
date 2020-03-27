@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info:
+  description: |
+    This is a sample Domain Service.  You can find
+    out more about Swagger at
+    [http://swagger.io](http://swagger.io) or on
+    [irc.freenode.net, #swagger](http://swagger.io/irc/).
+  version: "1.0.0"
+  title: Swagger Domain Service
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/marcus-n3rd/Domain-Service/1.0.0
+  - url: 'https://petstore.swagger.io/v2'
+tags:
+  - name: domain
+    description: Everything about your Domains
+    externalDocs:
+      description: Find out more
+      url: 'http://swagger.io'
+  - name: store
+    description: Access to Domain Service orders
+  - name: user
+    description: Operations about user
+    externalDocs:
+      description: Find out more about our store
+      url: 'http://swagger.io'
+paths:
+  '/domain/{petId}':
+    get:
+      tags:
+        - domain
+      summary: Find domain by ID
+      description: Returns a single domain
+      operationId: getPetById
+      parameters:
+        - name: petId
+          in: path
+          description: ID of domain to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domain'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Domain'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Domain not found
+      security:
+        - api_key: []
+    post:
+      tags:
+        - domain
+      summary: Updates a domain in the store with form data
+      operationId: updatePetWithForm
+      parameters:
+        - name: petId
+          in: path
+          description: ID of domain that needs to be updated
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '405':
+          description: Invalid input
+      security:
+        - bearer_auth:
+            - 'write:domains'
+            - 'read:domains'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Updated name of the domain
+                  type: string
+                status:
+                  description: Updated status of the domain
+                  type: string
+    delete:
+      tags:
+        - domain
+      summary: Deletes a domain
+      operationId: deletePet
+      parameters:
+        - name: api_key
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: petId
+          in: path
+          description: Domain id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Domain not found
+      security:
+        - bearer_auth:
+            - 'write:domains'
+            - 'read:domains'
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+components:
+  schemas:
+    Domain:
+      type: object
+      required:
+        - name
+        - photoUrls
+      properties:
+        id:
+          type: integer
+          format: int64
+        category:
+          $ref: '#/components/schemas/Category'
+        name:
+          type: string
+          example: doggie
+        photoUrls:
+          type: array
+          xml:
+            name: photoUrl
+            wrapped: true
+          items:
+            type: string
+        tags:
+          type: array
+          xml:
+            name: tag
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Tag'
+        status:
+          type: string
+          description: domain status in the store
+          enum:
+            - available
+            - pending
+            - sold
+      xml:
+        name: Domain
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+  requestBodies:
+    Domain:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Domain'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Domain'
+      description: Domain object that needs to be added to the store
+      required: true
+  securitySchemes:
+    bearer_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'http://petstore.swagger.io/oauth/dialog'
+          scopes:
+            'write:domains': modify domains in your account
+            'read:domains': read your domains
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header

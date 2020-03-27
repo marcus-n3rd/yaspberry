@@ -152,6 +152,8 @@ will be `domainsIdGET`.
   * Fully integrated vis. design docs/mocks/storybooks
     * Live style guides
     * Live pattern/component library
+  * Automated release notes
+    * Automated commit messages
 * CI/CD
   * Jenkins
     * Simple Jenkinsfile showing how easy it is deploy through the stages
@@ -168,6 +170,7 @@ will be `domainsIdGET`.
 * Debugging
   * An example of how to debug via VS Code?
 * Full-on pet shop example from Swagger implemented in Node?
+* Lambda Layers
 * Azure & GCP examples
 * Logging & Monitoring
 * Handling VPC stuff

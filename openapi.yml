@@ -1,9 +1,9 @@
 ---
 swagger: "2.0"
 info:
-  description: "This is a sample Petstore server.  You can find \nout more about Swagger at \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n"
+  description: "This is a sample Domain Service.  You can find \nout more about Swagger at \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n"
   version: 1.0.0
-  title: Swagger Petstore
+  title: Swagger Domain Service
   termsOfService: http://swagger.io/terms/
   contact:
     email: apiteam@swagger.io
@@ -11,19 +11,12 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 host: virtserver.swaggerhub.com
-basePath: /marcus-n3rd/Petstore/1.0.0
+basePath: /marcus-n3rd/domain-service/1.0.0
 tags:
-- name: pet
-  description: Everything about your Pets
+- name: domain
+  description: Everything about your Domains
   externalDocs:
     description: Find out more
-    url: http://swagger.io
-- name: store
-  description: Access to Petstore orders
-- name: user
-  description: Operations about user
-  externalDocs:
-    description: Find out more about our store
     url: http://swagger.io
 schemes:
 - https
@@ -87,83 +80,22 @@ paths:
         "405":
           description: Invalid input
       security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+      - bearer_auth:
+        - write:domains
+        - read:domains
 securityDefinitions:
-  petstore_auth:
+  bearer_auth:
     type: oauth2
     authorizationUrl: http://petstore.swagger.io/oauth/dialog
     flow: implicit
     scopes:
-      write:pets: modify pets in your account
-      read:pets: read your pets
+      write:domains: modify domains in your account
+      read:domains: read your domains
   api_key:
     type: apiKey
     name: api_key
     in: header
 definitions:
-  Order:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      petId:
-        type: integer
-        format: int64
-      quantity:
-        type: integer
-        format: int32
-      shipDate:
-        type: string
-        format: date-time
-      status:
-        type: string
-        description: Order Status
-        enum:
-        - placed
-        - approved
-        - delivered
-      complete:
-        type: boolean
-        default: false
-    xml:
-      name: Order
-  Category:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    xml:
-      name: Category
-  User:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      username:
-        type: string
-      firstName:
-        type: string
-      lastName:
-        type: string
-      email:
-        type: string
-      password:
-        type: string
-      phone:
-        type: string
-      userStatus:
-        type: integer
-        format: int32
-        description: User Status
-    xml:
-      name: User
   Tag:
     type: object
     properties:
@@ -174,11 +106,10 @@ definitions:
         type: string
     xml:
       name: Tag
-  Pet:
+  Domain:
     type: object
     required:
     - name
-    - photoUrls
     properties:
       id:
         type: integer
@@ -187,14 +118,7 @@ definitions:
         $ref: '#/definitions/Category'
       name:
         type: string
-        example: doggie
-      photoUrls:
-        type: array
-        xml:
-          name: photoUrl
-          wrapped: true
-        items:
-          type: string
+        example: foobar
       tags:
         type: array
         xml:
@@ -204,13 +128,13 @@ definitions:
           $ref: '#/definitions/Tag'
       status:
         type: string
-        description: pet status in the store
+        description: domain status in the store
         enum:
         - available
         - pending
         - sold
     xml:
-      name: Pet
+      name: Domain
   ApiResponse:
     type: object
     properties:
