@@ -13,6 +13,8 @@
   },
   "keywords": [
     "serverless",
+    "back-end",
+    "rest api",
     "slalom"
   ],
   "author": "marcus.bernal@slalom.com",
@@ -48,10 +50,5 @@
     "http-errors": "^1.7.3",
     "lambda-proxy-response": "^2.0.0",
     "middy": "^0.34.0"
-  },
-  "sideEffects": [
-    "./src/config/secrets.js",
-    "./src/repositories/*",
-    "./src/services/*"
-  ]
+  }
 }

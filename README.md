@@ -174,6 +174,9 @@ will be `domainsIdGET`.
 * Azure & GCP examples
 * Logging & Monitoring
 * Handling VPC stuff
+* Fine-tune developer access for AWS:
+  * PowerUserAccess does not have enough permissions to create IAM roles for lambdas
+  * AdminAccess seems to be too permissive
 
 ### Node Packages
 
