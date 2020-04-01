@@ -13,3 +13,9 @@ export const domainPut = async (id, newData) => {
   await putEntity(entity.toDatabase());
   return entity.view();
 };
+
+export const domainPost = async (id, newData) => {
+  const entity = new DomainModel({ id, ...newData });
+  await postEntity(entity.toDatabase());
+  return entity.view();
+};
