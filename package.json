@@ -45,7 +45,7 @@
     "@middy/core": "^1.0.0-beta.8",
     "@middy/input-output-logger": "^1.0.0-beta.7",
     "aws-xray-sdk": "^2.5.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "flatted": "^2.0.1",
     "http-errors": "^1.7.3",
     "lambda-proxy-response": "^2.0.0",
