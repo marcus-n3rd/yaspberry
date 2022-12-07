@@ -33,7 +33,7 @@
     "jest-junit": "^10.0.0",
     "jest-stare": "^1.26.0",
     "minimist": ">=1.2.2",
-    "serverless": "^1.64.1",
+    "serverless": "^3.25.1",
     "serverless-webpack": "^5.3.1",
     "supertest": "^4.0.2",
     "utf-8-validate": "^5.0.2",
