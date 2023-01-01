@@ -37,7 +37,7 @@
     "serverless-webpack": "^5.3.1",
     "supertest": "^4.0.2",
     "utf-8-validate": "^5.0.2",
-    "webpack": "^4.41.6",
+    "webpack": "^5.75.0",
     "webpack-node-externals": "^1.7.2",
     "yaml": "^1.8.3"
   },
